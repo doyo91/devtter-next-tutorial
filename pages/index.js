@@ -1,29 +1,25 @@
-import AppLayout from "../components/AppLayout";
-import Button from "../components/Button";
-import GitHub from "../components/Icons/GitHub";
-import { colors } from "../styles/theme";
+import AppLayout from "../components/AppLayout"
+import Button from "../components/Button"
+import GitHub from "../components/Icons/GitHub"
+import { colors } from "../styles/theme"
 
-import {
-  loginWithGithub,
-  onAuthStateChanged,
-  signOut,
-} from "../firebase/client";
-import { useEffect, useState } from "react";
+import { loginWithGithub, onAuthStateChanged } from "../firebase/client"
+import { useEffect, useState } from "react"
 
 export default function Home() {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState(undefined)
 
   useEffect(() => {
-    onAuthStateChanged(setUser);
-  }, []);
+    onAuthStateChanged(setUser)
+  }, [])
 
   const handleClick = () => {
     loginWithGithub()
       .then(setUser)
       .catch((err) => {
-        console.log(err);
-      });
-  };
+        console.log(err)
+      })
+  }
 
   return (
     <>
@@ -79,5 +75,5 @@ export default function Home() {
         }
       `}</style>
     </>
-  );
+  )
 }
