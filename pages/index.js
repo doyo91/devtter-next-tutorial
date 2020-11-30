@@ -1,35 +1,33 @@
-import AppLayout from "../components/AppLayout";
-import Button from "../components/Button";
-import GitHub from "../components/Icons/GitHub";
-import { colors } from "../styles/theme";
+import AppLayout from "components/AppLayout"
+import Button from "components/Button"
+import GitHub from "components/Icons/GitHub"
+import Logo from "components/Icons/Logo"
+import { colors } from "styles/theme"
 
-import {
-  loginWithGithub,
-  onAuthStateChanged,
-  signOut,
-} from "../firebase/client";
-import { useEffect, useState } from "react";
+import { loginWithGithub, onAuthStateChanged } from "firebase/client"
+import { useEffect, useState } from "react"
+import Avatar from "components/Avatar"
 
 export default function Home() {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState(undefined)
 
   useEffect(() => {
-    onAuthStateChanged(setUser);
-  }, []);
+    onAuthStateChanged(setUser)
+  }, [])
 
   const handleClick = () => {
     loginWithGithub()
       .then(setUser)
       .catch((err) => {
-        console.log(err);
-      });
-  };
+        console.log(err)
+      })
+  }
 
   return (
     <>
       <AppLayout>
         <section>
-          <img src="/devter-logo.png" alt="logo" />
+          <Logo width="100" />
           <h1>Devtter</h1>
           <h2>Talk about development with developers 👨‍💻👩‍💻</h2>
           <div>
@@ -41,8 +39,12 @@ export default function Home() {
             )}
             {user && user.avatar && (
               <div>
-                <img src={user.avatar} alt="User avatar" />
-                <strong>{user.username}</strong>
+                <Avatar
+                  src={user.avatar}
+                  alt={user.username + " avatar"}
+                  text={user.username}
+                  withText
+                />
               </div>
             )}
           </div>
@@ -61,8 +63,8 @@ export default function Home() {
         }
 
         h1 {
-          font-size: 2.4rem;
-          color: ${colors.secondary};
+          font-size: 3.2rem;
+          color: ${colors.primary};
           font-weight: 800;
           margin-bottom: 1.6rem;
         }
@@ -70,7 +72,7 @@ export default function Home() {
         h2 {
           font-size: 2.1rem;
           margin: 0;
-          color: ${colors.primary};
+          color: ${colors.secondary};
           max-width: 25rem;
         }
 
@@ -79,5 +81,5 @@ export default function Home() {
         }
       `}</style>
     </>
-  );
+  )
 }

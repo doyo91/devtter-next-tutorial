@@ -1,5 +1,5 @@
-import Head from "next/head";
-import styles, { globalStyles } from "./styles";
+import Head from "next/head"
+import styles, { globalStyles } from "components/AppLayout/styles"
 
 export default function AppLayout({ children }) {
   return (
@@ -18,5 +18,5 @@ export default function AppLayout({ children }) {
         {globalStyles}
       </style>
     </>
-  );
+  )
 }
