@@ -6,21 +6,25 @@ import { colors } from "styles/theme"
 
 import { loginWithGithub, onAuthStateChanged } from "firebase/client"
 import { useEffect, useState } from "react"
-import Avatar from "components/Avatar"
+
+import { useRouter } from "next/router"
 
 export default function Home() {
   const [user, setUser] = useState(undefined)
+  const router = useRouter()
 
   useEffect(() => {
     onAuthStateChanged(setUser)
   }, [])
 
+  useEffect(() => {
+    user && router.replace("./home")
+  }, [user])
+
   const handleClick = () => {
-    loginWithGithub()
-      .then(setUser)
-      .catch((err) => {
-        console.log(err)
-      })
+    loginWithGithub().catch((err) => {
+      console.log(err)
+    })
   }
 
   return (
@@ -37,16 +41,7 @@ export default function Home() {
                 Login with GitHub
               </Button>
             )}
-            {user && user.avatar && (
-              <div>
-                <Avatar
-                  src={user.avatar}
-                  alt={user.username + " avatar"}
-                  text={user.username}
-                  withText
-                />
-              </div>
-            )}
+            {user === undefined && <img src="/spinner.gif" />}
           </div>
         </section>
       </AppLayout>
