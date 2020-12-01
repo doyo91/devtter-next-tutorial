@@ -45,4 +45,26 @@ export const addDevit = ({ avatar, content, userId, userName }) => {
   })
 }
 
-export const fetchLatestDevits = () => {}
+export const fetchLatestDevits = () => {
+  return db
+    .collection("devits")
+    .get()
+    .then((snapshot) => {
+      return snapshot.docs.map((doc) => {
+        const data = doc.data()
+        const id = doc.id
+        const { createdAt } = data
+
+        const date = new Date(createdAt.seconds * 1000)
+        const normalizedCreatedAt = new Intl.DateTimeFormat("es-ES").format(
+          date
+        )
+
+        return {
+          ...data,
+          id,
+          createdAt: normalizedCreatedAt,
+        }
+      })
+    })
+}
