@@ -35,28 +35,27 @@ export default function HomePage() {
           header {
             display: flex;
             align-items: center;
-            height: 49px;
+            height: 4.9rem;
             width: 100%;
             position: sticky;
-            border-bottom: 1px solid #ccc;
-            padding: 0 1rem;
+            top: 0;
+            border-bottom: 1px solid #eee;
+            background-color: #ffffffee;
           }
 
           h2 {
-            font.weight: 800;
-            font-size: 2.2rem;
-          }
-
-          section {
-            padding-top: 10rem;
+            font-weight: 800;
+            font-size: 2.1rem;
+            padding-left: 1.5rem;
           }
 
           nav {
             bottom: 0;
-            position: fixed;
-            height: 49px;
+            position: sticky;
+            height: 4.9rem;
             width: 100%;
-            border-top: 1px solid #ccc;
+            border-top: 1px solid #eee;
+            background: #fff;
           }
         `}
       </style>

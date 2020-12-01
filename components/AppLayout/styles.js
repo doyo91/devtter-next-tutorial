@@ -7,14 +7,15 @@ const backgroundColor = addOpacityToColor(colors.primary, 0.3)
 export const globalStyles = css.global`
   html,
   body {
-    font-size: 10px;
+    font-size: 1rem;
     padding: 0;
     margin: 0;
     font-family: ${fonts.base};
     background-image: radial-gradient(${backgroundColor} 1px, #fdfdfd 1px),
       radial-gradient(${backgroundColor} 1px, #fdfdfd 1px);
-    background-position: 0 0, 25px 25px;
-    background-size: 50px 50px;
+    background-position: 0 0, 2.5rem 2.5rem;
+    background-size: 5rem 5rem;
+    overflow: hidden;
   }
 
   a {
@@ -36,10 +37,11 @@ export default css`
   main {
     background: #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 1rem;
     width: 100%;
     height: 100%;
     position: relative;
+    overflow-y: auto;
   }
 
   @media (min-width: ${breakpoints.mobile}) {

@@ -17,7 +17,7 @@ export default function Devit({ avatar, username, message, id }) {
           article {
             padding: 1rem 1.5rem;
             display: flex;
-            border: 2px solid #eaf7ff;
+            border: 1px solid #eee;
           }
 
           div {

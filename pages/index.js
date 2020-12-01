@@ -9,8 +9,13 @@ import { useEffect, useState } from "react"
 
 import { useRouter } from "next/router"
 
+const USER_STATES = {
+  NOT_LOGGED: null,
+  NOT_KNOWN: undefined,
+}
+
 export default function Home() {
-  const [user, setUser] = useState(undefined)
+  const [user, setUser] = useState(USER_STATES.NOT_KNOWN)
   const router = useRouter()
 
   useEffect(() => {
@@ -35,13 +40,13 @@ export default function Home() {
           <h1>Devtter</h1>
           <h2>Talk about development with developers 👨‍💻👩‍💻</h2>
           <div>
-            {user === null && (
+            {user === USER_STATES.NOT_LOGGED && (
               <Button onClick={handleClick}>
                 <GitHub fill="#fff" width={24} height={24} />
                 Login with GitHub
               </Button>
             )}
-            {user === undefined && <img src="/spinner.gif" />}
+            {user === USER_STATES.NOT_KNOWN && <img src="/spinner.gif" />}
           </div>
         </section>
       </AppLayout>
