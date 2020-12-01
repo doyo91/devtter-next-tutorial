@@ -46,7 +46,7 @@ export default function ComposeDevit() {
 
   return (
     <>
-      <AppLayout>
+      <AppLayout title="Crear un Devit | Devtter 🐦">
         <form onSubmit={handleSubmit}>
           <textarea
             placeholder="¿Qué esta pasando?"

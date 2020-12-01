@@ -9,6 +9,7 @@ import { useEffect } from "react"
 
 import { useRouter } from "next/router"
 import useUser, { USER_STATES } from "hooks/useUser"
+import Loading from "components/Loading"
 
 export default function Home() {
   const user = useUser()
@@ -26,7 +27,7 @@ export default function Home() {
 
   return (
     <>
-      <AppLayout>
+      <AppLayout title="Devtter 🐦">
         <section>
           <Logo width="100" />
           <h1>Devtter</h1>
@@ -38,7 +39,7 @@ export default function Home() {
                 Login with GitHub
               </Button>
             )}
-            {user === USER_STATES.NOT_KNOWN && <img src="/spinner.gif" />}
+            {user === USER_STATES.NOT_KNOWN && <Loading size={45} />}
           </div>
         </section>
       </AppLayout>

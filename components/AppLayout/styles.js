@@ -46,6 +46,8 @@ export default css`
   }
 
   main {
+    display: flex;
+    flex-direction: column;
     background: #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
