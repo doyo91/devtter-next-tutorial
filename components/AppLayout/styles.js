@@ -7,7 +7,7 @@ const backgroundColor = addOpacityToColor(colors.primary, 0.3)
 export const globalStyles = css.global`
   html,
   body {
-    font-size: 1rem;
+    font-size: 10px;
     padding: 0;
     margin: 0;
     font-family: ${fonts.base};
@@ -24,6 +24,17 @@ export const globalStyles = css.global`
 
   * {
     box-sizing: border-box;
+  }
+
+  p,
+  span,
+  strong {
+    font-size: 1.6rem;
+  }
+
+  textarea,
+  input {
+    font-family: ${fonts.base};
   }
 `
 

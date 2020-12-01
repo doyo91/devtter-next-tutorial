@@ -14,8 +14,8 @@ const firebaseConfig = {
 !firebase.apps.length && firebase.initializeApp(firebaseConfig)
 
 const mapUserFromFirebaseAuthToUser = (user) => {
-  const { displayName, email, photoURL } = user
-  return { avatar: photoURL, username: displayName, email }
+  const { displayName, email, photoURL, uid } = user
+  return { avatar: photoURL, username: displayName, email, uid }
 }
 
 export const onAuthStateChanged = (onChange) => {
@@ -29,3 +29,5 @@ export const loginWithGithub = () => {
   const githubProvider = new firebase.auth.GithubAuthProvider()
   return firebase.auth().signInWithPopup(githubProvider)
 }
+
+export const addDevit = ({ avatar, content, userId, userName }) => {}
