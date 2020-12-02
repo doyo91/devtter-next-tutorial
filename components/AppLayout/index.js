@@ -1,11 +1,11 @@
 import Head from "next/head"
 import styles, { globalStyles } from "components/AppLayout/styles"
 
-export default function AppLayout({ children }) {
+export default function AppLayout({ children, title }) {
   return (
     <>
       <Head>
-        <title>Devtter 🐦</title>
+        <title>{title}</title>
       </Head>
       <div>
         <main>{children}</main>

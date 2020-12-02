@@ -1,0 +1,8 @@
+export { default as ArrowLeft } from "components/Icons/ArrowLeft"
+export { default as Create } from "components/Icons/Create"
+export { default as GitHub } from "components/Icons/GitHub"
+export { default as Home } from "components/Icons/Home"
+export { default as Like } from "components/Icons/Like"
+export { default as Logo } from "components/Icons/Logo"
+export { default as Reuse } from "components/Icons/Reuse"
+export { default as Search } from "components/Icons/Search"
