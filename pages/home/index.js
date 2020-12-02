@@ -17,44 +17,42 @@ export default function HomePage() {
 
   return (
     <>
-      <AppLayout title="Inicio | Devtter 🐦">
-        <header>
-          <h2>Inicio</h2>
-        </header>
-        <section>
-          {timeline.map(
-            ({ id, userId, userName, avatar, content, createdAt, img }) => (
-              <Devit
-                key={id}
-                userName={userName}
-                avatar={avatar}
-                content={content}
-                id={id}
-                img={img}
-                userId={userId}
-                createdAt={createdAt}
-              />
-            )
-          )}
-        </section>
-        <nav>
-          <Link href="/home">
-            <a>
-              <Home stroke="#09f" width={32} height={32} />
-            </a>
-          </Link>
-          <Link href="/compose/devit">
-            <a>
-              <Search stroke="#09f" width={32} height={32} />
-            </a>
-          </Link>
-          <Link href="/compose/devit">
-            <a>
-              <Create stroke="#09f" width={32} height={32} />
-            </a>
-          </Link>
-        </nav>
-      </AppLayout>
+      <header>
+        <h2>Inicio</h2>
+      </header>
+      <section>
+        {timeline.map(
+          ({ id, userId, userName, avatar, content, createdAt, img }) => (
+            <Devit
+              key={id}
+              userName={userName}
+              avatar={avatar}
+              content={content}
+              id={id}
+              img={img}
+              userId={userId}
+              createdAt={createdAt}
+            />
+          )
+        )}
+      </section>
+      <nav>
+        <Link href="/home">
+          <a>
+            <Home stroke="#09f" width={32} height={32} />
+          </a>
+        </Link>
+        <Link href="/compose/devit">
+          <a>
+            <Search stroke="#09f" width={32} height={32} />
+          </a>
+        </Link>
+        <Link href="/compose/devit">
+          <a>
+            <Create stroke="#09f" width={32} height={32} />
+          </a>
+        </Link>
+      </nav>
       <style jsx>
         {`
           header {

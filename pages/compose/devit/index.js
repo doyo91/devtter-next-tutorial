@@ -95,35 +95,34 @@ export default function ComposeDevit() {
 
   return (
     <>
-      <AppLayout title="Crear un Devit | Devtter 🐦">
-        <section className="form-container">
-          {user && (
-            <div className="avatar-container">
-              <Avatar src={user.avatar} />
-            </div>
-          )}
+      <section className="form-container">
+        {user && (
+          <div className="avatar-container">
+            <Avatar src={user.avatar} />
+          </div>
+        )}
 
-          <form onSubmit={handleSubmit}>
-            <textarea
-              placeholder="¿Qué esta pasando?"
-              value={message}
-              onChange={handleChange}
-              onDragEnter={handleDragEnter}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-            ></textarea>
-            {imgURL && (
-              <section className="remove-img">
-                <button onClick={() => setImgURL(null)}>x</button>
-                <img url={imgURL} />
-              </section>
-            )}
-            <div className="btn-container">
-              <Button disabled={isButtonDisabled}>Devittear</Button>
-            </div>
-          </form>
-        </section>
-      </AppLayout>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            placeholder="¿Qué esta pasando?"
+            value={message}
+            onChange={handleChange}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+          ></textarea>
+          {imgURL && (
+            <section className="remove-img">
+              <button onClick={() => setImgURL(null)}>x</button>
+              <img url={imgURL} />
+            </section>
+          )}
+          <div className="btn-container">
+            <Button disabled={isButtonDisabled}>Devittear</Button>
+          </div>
+        </form>
+      </section>
+
       <style jsx>{`
         .form-container {
           display: flex;

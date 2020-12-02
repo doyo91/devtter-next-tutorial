@@ -27,22 +27,20 @@ export default function Home() {
 
   return (
     <>
-      <AppLayout title="Devtter 🐦">
-        <section>
-          <Logo width="100" />
-          <h1>Devtter</h1>
-          <h2>Talk about development with developers 👨‍💻👩‍💻</h2>
-          <div>
-            {user === USER_STATES.NOT_LOGGED && (
-              <Button onClick={handleClick}>
-                <GitHub fill="#fff" width={24} height={24} />
-                Login with GitHub
-              </Button>
-            )}
-            {user === USER_STATES.NOT_KNOWN && <Loading size={45} />}
-          </div>
-        </section>
-      </AppLayout>
+      <section>
+        <Logo width="100" />
+        <h1>Devtter</h1>
+        <h2>Talk about development with developers 👨‍💻👩‍💻</h2>
+        <div>
+          {user === USER_STATES.NOT_LOGGED && (
+            <Button onClick={handleClick}>
+              <GitHub fill="#fff" width={24} height={24} />
+              Login with GitHub
+            </Button>
+          )}
+          {user === USER_STATES.NOT_KNOWN && <Loading size={45} />}
+        </div>
+      </section>
 
       <style jsx>{`
         section {
