@@ -1,5 +1,7 @@
 import Avatar from "components/Avatar"
 import useTimeAgo from "hooks/useTimeAgo"
+import useDateTimeFormat from "hooks/useDateTimeFormat.js"
+import Link from "next/link"
 
 export default function Devit({
   avatar,
@@ -11,6 +13,8 @@ export default function Devit({
   createdAt,
 }) {
   const timeago = useTimeAgo(createdAt)
+  const createdAtFormated = useDateTimeFormat(createdAt)
+
   return (
     <>
       <article key={id}>
@@ -21,7 +25,11 @@ export default function Devit({
           <header>
             <strong>{userName}</strong>
             <span> · </span>
-            <date>{timeago}</date>
+            <Link href={`/status/${id}`}>
+              <a>
+                <time title={createdAtFormated}>{timeago}</time>
+              </a>
+            </Link>
           </header>
           <p>{content}</p>
           {img && <img src={img} />}
@@ -44,7 +52,15 @@ export default function Devit({
             line-height: 1.3;
           }
 
-          date {
+          a {
+            color: #555;
+            font-size: 14px;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+
+          time {
             color: #555;
             font-size: 14px;
           }

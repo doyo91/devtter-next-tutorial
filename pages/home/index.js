@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import AppLayout from "components/AppLayout"
+import Head from "next/head"
 import Devit from "components/Devit"
 import useUser from "hooks/useUser"
 import { fetchLatestDevits } from "firebase/client"
@@ -17,6 +17,10 @@ export default function HomePage() {
 
   return (
     <>
+      <Head>
+        <title>Inicio || Devtter 🐦</title>
+      </Head>
+
       <header>
         <h2>Inicio</h2>
       </header>

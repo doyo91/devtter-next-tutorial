@@ -1,4 +1,4 @@
-import AppLayout from "components/AppLayout"
+import Head from "next/head"
 import Button from "components/Button"
 import useUser from "hooks/useUser"
 import { useEffect, useState } from "react"
@@ -95,6 +95,9 @@ export default function ComposeDevit() {
 
   return (
     <>
+      <Head>
+        <title>Crea un devit || Devtter 🐦</title>
+      </Head>
       <section className="form-container">
         {user && (
           <div className="avatar-container">
