@@ -10,7 +10,15 @@ export default (request, response) => {
     .get()
     .then((doc) => {
       const data = doc.data()
-      response.json(data)
+      const id = doc.id
+      const { createdAt } = data
+
+      const devit = {
+        ...data,
+        id,
+        createdAt: +createdAt.toDate(),
+      }
+      return response.json(devit)
     })
     .catch(() => {
       response.status(404).end()
