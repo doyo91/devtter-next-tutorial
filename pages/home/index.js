@@ -52,6 +52,7 @@ export default function HomePage() {
             top: 0;
             border-bottom: 1px solid #eee;
             background-color: #ffffffee;
+            backdrop-filter: blur(5px);
           }
 
           h2 {
