@@ -1,3 +1,4 @@
+import Navbar from "components/Navbar"
 import Head from "next/head"
 
 export default function DevitPage() {
@@ -6,8 +7,13 @@ export default function DevitPage() {
       <Head>
         <title>Devtter 🐦</title>
       </Head>
-      Devit PAge
-      <style jsx>{``}</style>
+      <section>Devit con id</section>
+      <Navbar />
+      <style jsx>{`
+        section {
+          flex: 1;
+        }
+      `}</style>
     </>
   )
 }

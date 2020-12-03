@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { addDevit, uploadImage } from "firebase/client"
 import { useRouter } from "next/router"
 import Avatar from "components/Avatar"
+import Navbar from "components/Navbar"
 
 const COMPOSE_STATES = {
   USER_NOT_KNOWN: 0,
@@ -126,10 +127,13 @@ export default function ComposeDevit() {
         </form>
       </section>
 
+      <Navbar />
+
       <style jsx>{`
         .form-container {
           display: flex;
           align-items: flex-start;
+          flex: 1;
         }
         form {
           padding: 1rem;
