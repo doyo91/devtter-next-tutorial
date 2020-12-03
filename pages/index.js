@@ -1,15 +1,15 @@
-import AppLayout from "components/AppLayout"
-import Button from "components/Button"
+import { useEffect } from "react"
+import Head from "next/head"
+import { useRouter } from "next/router"
+
+import useUser, { USER_STATES } from "hooks/useUser"
+import { loginWithGithub } from "firebase/client"
 import GitHub from "components/Icons/GitHub"
 import Logo from "components/Icons/Logo"
-import { colors } from "styles/theme"
-
-import { loginWithGithub } from "firebase/client"
-import { useEffect } from "react"
-
-import { useRouter } from "next/router"
-import useUser, { USER_STATES } from "hooks/useUser"
+import Button from "components/Button"
 import Loading from "components/Loading"
+
+import { colors } from "styles/theme"
 
 export default function Home() {
   const user = useUser()
@@ -27,22 +27,23 @@ export default function Home() {
 
   return (
     <>
-      <AppLayout title="Devtter 🐦">
-        <section>
-          <Logo width="100" />
-          <h1>Devtter</h1>
-          <h2>Talk about development with developers 👨‍💻👩‍💻</h2>
-          <div>
-            {user === USER_STATES.NOT_LOGGED && (
-              <Button onClick={handleClick}>
-                <GitHub fill="#fff" width={24} height={24} />
-                Login with GitHub
-              </Button>
-            )}
-            {user === USER_STATES.NOT_KNOWN && <Loading size={45} />}
-          </div>
-        </section>
-      </AppLayout>
+      <Head>
+        <title>Devtter 🐦</title>
+      </Head>
+      <section>
+        <Logo width="100" />
+        <h1>Devtter</h1>
+        <h2>Talk about development with developers 👨‍💻👩‍💻</h2>
+        <div>
+          {user === USER_STATES.NOT_LOGGED && (
+            <Button onClick={handleClick}>
+              <GitHub fill="#fff" width={24} height={24} />
+              Login with GitHub
+            </Button>
+          )}
+          {user === USER_STATES.NOT_KNOWN && <Loading size={45} />}
+        </div>
+      </section>
 
       <style jsx>{`
         section {

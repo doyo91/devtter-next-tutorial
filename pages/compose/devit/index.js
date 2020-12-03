@@ -1,4 +1,4 @@
-import AppLayout from "components/AppLayout"
+import Head from "next/head"
 import Button from "components/Button"
 import useUser from "hooks/useUser"
 import { useEffect, useState } from "react"
@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { addDevit, uploadImage } from "firebase/client"
 import { useRouter } from "next/router"
 import Avatar from "components/Avatar"
+import Navbar from "components/Navbar"
 
 const COMPOSE_STATES = {
   USER_NOT_KNOWN: 0,
@@ -95,39 +96,44 @@ export default function ComposeDevit() {
 
   return (
     <>
-      <AppLayout title="Crear un Devit | Devtter 🐦">
-        <section className="form-container">
-          {user && (
-            <div className="avatar-container">
-              <Avatar src={user.avatar} />
-            </div>
-          )}
+      <Head>
+        <title>Crea un devit || Devtter 🐦</title>
+      </Head>
+      <section className="form-container">
+        {user && (
+          <div className="avatar-container">
+            <Avatar src={user.avatar} />
+          </div>
+        )}
 
-          <form onSubmit={handleSubmit}>
-            <textarea
-              placeholder="¿Qué esta pasando?"
-              value={message}
-              onChange={handleChange}
-              onDragEnter={handleDragEnter}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-            ></textarea>
-            {imgURL && (
-              <section className="remove-img">
-                <button onClick={() => setImgURL(null)}>x</button>
-                <img url={imgURL} />
-              </section>
-            )}
-            <div className="btn-container">
-              <Button disabled={isButtonDisabled}>Devittear</Button>
-            </div>
-          </form>
-        </section>
-      </AppLayout>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            placeholder="¿Qué esta pasando?"
+            value={message}
+            onChange={handleChange}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+          ></textarea>
+          {imgURL && (
+            <section className="remove-img">
+              <button onClick={() => setImgURL(null)}>x</button>
+              <img url={imgURL} />
+            </section>
+          )}
+          <div className="btn-container">
+            <Button disabled={isButtonDisabled}>Devittear</Button>
+          </div>
+        </form>
+      </section>
+
+      <Navbar />
+
       <style jsx>{`
         .form-container {
           display: flex;
           align-items: flex-start;
+          flex: 1;
         }
         form {
           padding: 1rem;

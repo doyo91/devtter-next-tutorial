@@ -1,3 +1,4 @@
+import { DEFAULT_LANGUAGE } from "constants/locale"
 import { useEffect, useState } from "react"
 
 const DATE_UNITS = [
@@ -31,7 +32,8 @@ export default function useTimeAgo(timestamp) {
     return () => clearInterval(timeout)
   }, [timestamp])
 
-  const rtf = new Intl.RelativeTimeFormat(navigator.language, {
+  const language = DEFAULT_LANGUAGE || navigator.language
+  const rtf = new Intl.RelativeTimeFormat(language, {
     style: "short",
   })
 

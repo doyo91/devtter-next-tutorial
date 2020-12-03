@@ -1,5 +1,8 @@
 import Avatar from "components/Avatar"
 import useTimeAgo from "hooks/useTimeAgo"
+import useDateTimeFormat from "hooks/useDateTimeFormat.js"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 export default function Devit({
   avatar,
@@ -11,9 +14,17 @@ export default function Devit({
   createdAt,
 }) {
   const timeago = useTimeAgo(createdAt)
+  const createdAtFormated = useDateTimeFormat(createdAt)
+  const router = useRouter()
+
+  const handleArticleClick = (e) => {
+    e.preventDefault()
+    router.push(`/status/${id}`)
+  }
+
   return (
     <>
-      <article key={id}>
+      <article key={id} onClick={handleArticleClick}>
         <div>
           <Avatar src={avatar} alt={userName + " avatar"} />
         </div>
@@ -21,7 +32,11 @@ export default function Devit({
           <header>
             <strong>{userName}</strong>
             <span> · </span>
-            <date>{timeago}</date>
+            <Link href={`/status/${id}`}>
+              <a>
+                <time title={createdAtFormated}>{timeago}</time>
+              </a>
+            </Link>
           </header>
           <p>{content}</p>
           {img && <img src={img} />}
@@ -35,6 +50,11 @@ export default function Devit({
             border: 1px solid #eee;
           }
 
+          article:hover {
+            background-color: #f5f8fa;
+            cursor: pointer;
+          }
+
           div {
             padding-right: 1rem;
           }
@@ -44,7 +64,15 @@ export default function Devit({
             line-height: 1.3;
           }
 
-          date {
+          a {
+            color: #555;
+            font-size: 14px;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+
+          time {
             color: #555;
             font-size: 14px;
           }
